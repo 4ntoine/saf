@@ -36,10 +36,8 @@ class Saf {
       /// Get the URI of user selected Directory path
       final selectedDirectoryUri = await kDocumentFileChannel
           .invokeMethod<String?>(kOpenDocumentTree, args);
-      if (isDynamic) {
-        _uriString = selectedDirectoryUri;
-        _directory = makeDirectoryPath(_uriString!);
-      }
+      _uriString = selectedDirectoryUri;
+      _directory = makeDirectoryPath(_uriString!);
       if (!isDynamic && selectedDirectoryUri != _uriString) {
         releasePersistableUriPermission(selectedDirectoryUri);
         return false;
